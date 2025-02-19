@@ -17,6 +17,7 @@ pip install -r requirements.txt
 ## Running
 ```sh
 uvicorn main:app
+python -m app.writeDb
 ```
 
 ## Routes Docs

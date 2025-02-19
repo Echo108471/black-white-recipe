@@ -1,0 +1,72 @@
+digraph {
+	root_u [label=u]
+	root -> root_u
+	root_u_e [label=e]
+	root_u -> root_u_e
+	root_u_e_e [label=e]
+	root_u_e -> root_u_e_e
+	root_u_e_e_e [label=e]
+	root_u_e_e -> root_u_e_e_e
+	root_u_e_e_e_u [label=u]
+	root_u_e_e_e -> root_u_e_e_e_u
+	root_u_e_e_e_u_u [label=u]
+	root_u_e_e_e_u -> root_u_e_e_e_u_u
+	root_u_e_e_e_u_u_u [label=u]
+	root_u_e_e_e_u_u -> root_u_e_e_e_u_u_u
+	root_u_e_e_e_u_u_u_u [label=u]
+	root_u_e_e_e_u_u_u -> root_u_e_e_e_u_u_u_u
+	"root_u_e_e_e_u_u_u_u_$" [label="$"]
+	root_u_e_e_e_u_u_u_u -> "root_u_e_e_e_u_u_u_u_$"
+	root_u_u [label=u]
+	root_u -> root_u_u
+	root_u_u_u [label=u]
+	root_u_u -> root_u_u_u
+	root_u_u_u_u [label=u]
+	root_u_u_u -> root_u_u_u_u
+	"root_u_u_u_u_$" [label="$"]
+	root_u_u_u_u -> "root_u_u_u_u_$"
+	"root_u_u_u_$" [label="$"]
+	root_u_u_u -> "root_u_u_u_$"
+	"root_u_u_$" [label="$"]
+	root_u_u -> "root_u_u_$"
+	"root_u_$" [label="$"]
+	root_u -> "root_u_$"
+	root_e [label=e]
+	root -> root_e
+	root_e_e [label=e]
+	root_e -> root_e_e
+	root_e_e_e [label=e]
+	root_e_e -> root_e_e_e
+	root_e_e_e_u [label=u]
+	root_e_e_e -> root_e_e_e_u
+	root_e_e_e_u_u [label=u]
+	root_e_e_e_u -> root_e_e_e_u_u
+	root_e_e_e_u_u_u [label=u]
+	root_e_e_e_u_u -> root_e_e_e_u_u_u
+	root_e_e_e_u_u_u_u [label=u]
+	root_e_e_e_u_u_u -> root_e_e_e_u_u_u_u
+	"root_e_e_e_u_u_u_u_$" [label="$"]
+	root_e_e_e_u_u_u_u -> "root_e_e_e_u_u_u_u_$"
+	root_e_e_u [label=u]
+	root_e_e -> root_e_e_u
+	root_e_e_u_u [label=u]
+	root_e_e_u -> root_e_e_u_u
+	root_e_e_u_u_u [label=u]
+	root_e_e_u_u -> root_e_e_u_u_u
+	root_e_e_u_u_u_u [label=u]
+	root_e_e_u_u_u -> root_e_e_u_u_u_u
+	"root_e_e_u_u_u_u_$" [label="$"]
+	root_e_e_u_u_u_u -> "root_e_e_u_u_u_u_$"
+	root_e_u [label=u]
+	root_e -> root_e_u
+	root_e_u_u [label=u]
+	root_e_u -> root_e_u_u
+	root_e_u_u_u [label=u]
+	root_e_u_u -> root_e_u_u_u
+	root_e_u_u_u_u [label=u]
+	root_e_u_u_u -> root_e_u_u_u_u
+	"root_e_u_u_u_u_$" [label="$"]
+	root_e_u_u_u_u -> "root_e_u_u_u_u_$"
+	"root_$" [label="$"]
+	root -> "root_$"
+}
