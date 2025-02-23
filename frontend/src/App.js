@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
@@ -7,18 +7,43 @@ import Recipes from "./components/Recipes";
 import Ingredients from "./components/Ingredients";
 import Home from "./components/Home";
 import Ranking from "./components/Ranking";
+import SearchBar from "./components/SearchBar";
 
 function App() {
+  const [ingredients, setIngredients] = useState([]); //  상태 변수명 수정
+  const [newIngredient, setNewIngredient] = useState("");
+
+  const addIngredient = () => {
+    if (newIngredient.trim() !== "") {
+      setIngredients([...ingredients, newIngredient]); //  `data` → `ingredients`
+      setNewIngredient(""); 
+    }
+  };
+
   return (
-    <Router> {/* ✅ Router로 감싸기 */}
+    <Router> 
       <Header />
-      <NavBar />
+      <div className = "header2">
+        <NavBar/> {/*`ingredients` 데이터를 NavBar로 전달 */}
+        <SearchBar data={ingredients} />
+      </div>
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/ingredients" element={<Ingredients />} />
         <Route path="/ranking" element={<Ranking />} />
       </Routes>
+
+      {/*<div className="input-container">
+        <input 
+          type="text" 
+          value={newIngredient} 
+          onChange={(e) => setNewIngredient(e.target.value)}
+          placeholder="Add an ingredient"
+        />
+        <button onClick={addIngredient}>Add</button>
+  </div>*/}
     </Router>
   );
 }
