@@ -1,21 +1,18 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Recipes from "./src/components/Recipes";
-import Ingredients from "./src/components/Ingredients";
-import Home from "./src/components/Home";
-import Ranking from "./src/components/Ranking";
+import "../styles/NavBar.css";
+import { Link } from "react-router-dom"; // ✅ `Link`만 사용
 
 function NavBar() {
-  return (
-      <nav>
-        <ul>
-          <li><a href="/Recipes">Recipes</a></li>
-          <li><a href="/Ingredients">Ingredients</a></li>
-          <li><a href="/Home">Home</a></li>
-          <li><a href="/Ranking">Ranking</a></li>
-        </ul>
-      </nav>
-  );
+    return (
+        <nav className="navbar">
+            <ul>
+                <li><Link to="/recipes">Recipes</Link></li>
+                <li><Link to="/ingredients">Ingredients</Link></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/ranking">Ranking</Link></li>
+            </ul>
+        </nav>
+    );
 }
 
 export default NavBar;

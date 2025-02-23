@@ -1,0 +1,106 @@
+.navbar{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #000000;
+    font-style: none;
+}
+.navbar ul{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #000000;
+    font-style: none;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.navbar ul li a:hover {
+    background: #555;
+}
+
+    /* Recipes */
+
+/*position: absolute;
+width: 73px;
+height: 13px;
+left: 156px;
+top: 174px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+
+color: #000000;*/
+
+
+
+/* Ingredients */
+
+/* position: absolute;
+width: 120px;
+height: 13px;
+left: 292px;
+top: 174px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+
+color: #000000;*/
+
+
+
+/* Home */
+
+/* position: absolute;
+width: 120px;
+height: 13px;
+left: 475px;
+top: 174px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+
+color: #000000;*/
+
+
+
+/* Ranking */
+
+/* position: absolute;
+width: 120px;
+height: 13px;
+left: 604px;
+top: 174px;
+
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 27px;
+
+color: #000000;*/
+

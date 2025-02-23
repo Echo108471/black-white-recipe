@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css";
+import "../styles/Header.css";
 import LogoIcon from "../assets/logo.svg";
 import CreateImage from "../assets/create.svg";
 
@@ -20,4 +20,5 @@ function Header() {
       </header>
     );
 }
+
 export default Header;
