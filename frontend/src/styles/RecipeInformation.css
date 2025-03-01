@@ -1,0 +1,32 @@
+.RecipeInformation{
+    margin-left:10%;
+}
+
+.recipetitle{
+    display: flex;
+    gap: 30%;
+}
+
+.recipeinfo{
+    display:flex;
+}
+
+.introduction{
+    display:flex;
+}
+
+.information{
+    display:flex;
+}
+
+.servings{
+    display:flex;
+}
+
+.total-time{
+    display:flex;
+}
+
+.difficulty{
+    display:flex;
+}

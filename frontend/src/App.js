@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
-import Recipes from "./components/Recipes";
+import Recipes from "./Recipes";
 import Ingredients from "./components/Ingredients";
 import Home from "./components/Home";
 import Ranking from "./components/Ranking";
 import SearchBar from "./components/SearchBar";
+
 
 function App() {
   const [ingredients, setIngredients] = useState([]); //  상태 변수명 수정
@@ -24,7 +25,7 @@ function App() {
     <Router> 
       <Header />
       <div className = "header2">
-        <NavBar/> {/*`ingredients` 데이터를 NavBar로 전달 */}
+        <NavBar/> 
         <SearchBar data={ingredients} />
       </div>
 
