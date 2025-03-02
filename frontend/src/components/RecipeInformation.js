@@ -25,6 +25,7 @@ function RecipeInformation() {
                     type="text"
                     value={recipeTitle}
                     onChange={(e) => setRecipeTitle(e.target.value)}
+                    className="titletext"
                 />
             </div>
 
@@ -34,6 +35,7 @@ function RecipeInformation() {
                     type="text"
                     value={recipeInfo}
                     onChange={(e) => setRecipeInfo(e.target.value)}
+                    className="infotext"
                 />
             </div>
 
@@ -43,6 +45,7 @@ function RecipeInformation() {
                     type="text"
                     value={introduction}
                     onChange={(e) => setIntroduction(e.target.value)}
+                    className="introtext"
                 />
             </div>
 

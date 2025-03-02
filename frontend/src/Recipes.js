@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./Recipes.css";
 import RecipeInformation from "./components/RecipeInformation"; 
+import IngredientsCreateRecipe from "./components/IngredientsCreateRecipe"; 
+
 
 function Recipes() {
   const [ingredients, setIngredients] = useState([]); 
@@ -21,8 +23,12 @@ function Recipes() {
       <div className="RecipeInformation"> 
         <RecipeInformation />  
       </div>
+      <div className="Ingredients">
+        <h1>Ingredients</h1>
+        <IngredientsCreateRecipe />
+      </div>
     </div>
-  );  // ✅ Added missing closing bracket
+  );  
 }
 
 export default Recipes;

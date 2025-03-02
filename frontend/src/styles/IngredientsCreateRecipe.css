@@ -1,0 +1,23 @@
+.ingredients-container{
+    margin-left: 5%;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ingredients-container1{
+    display: flex;
+    gap: 15%;
+    margin-bottom: 2%;
+}
+
+.IngredientName{
+    width: 30%;
+}
+
+.add-more-btn{
+    margin-top: 20px;  /* ✅ 버튼과 입력 필드 사이 간격 추가 */
+    padding: 10px 15px; /* ✅ 버튼 크기 키우기 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

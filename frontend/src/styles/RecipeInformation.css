@@ -1,20 +1,45 @@
 .RecipeInformation{
-    margin-left:10%;
+    margin-left:7%;
+    display:grid;
+    gap: 5%;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 12px;
+    line-height: 25px;
+    align-items: center;
+    color: #000000;
 }
 
 .recipetitle{
     display: flex;
-    gap: 30%;
+    gap: 10%;
+}
+.titletext{
+    border:none;
+    width: 70%;
 }
 
 .recipeinfo{
     display:flex;
+    gap: 4%;
+}
+.infotext{
+    border:none;
+    width: 70%;
+    background-color: #E9ECEF;
 }
 
 .introduction{
     display:flex;
+    gap: 9%;
 }
-
+.introtext{
+    border:none;
+    width: 70%;
+    height: 20vw;
+    background-color: #E9ECEF;
+}
 .information{
     display:flex;
 }
