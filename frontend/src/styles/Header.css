@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jeju+Myeongjo&display=swap');
 body {
     font-family: 'Jeju Myeongjo', serif;
+    background-color: #FFFFFF;
 }
 
 .logo{
@@ -47,6 +48,15 @@ body {
     border-radius: 15px;
 }
 
+.create:hover {
+    box-sizing: border-box;
+    width: 118px;
+    height: 38px;
+    background: #d1d1d154;
+    border: 1px solid #000000;
+    border-radius: 15px;
+}
+
 .CreateImage{
     position: absolute;
     width: 30px;
@@ -63,6 +73,11 @@ body {
     border: none;  
     margin: 20px 0;  
 }
+
+.header {
+    background-color: white !important;
+}
+
 
 
 

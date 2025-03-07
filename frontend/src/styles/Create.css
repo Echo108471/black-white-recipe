@@ -1,0 +1,141 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+    width: 100%;
+    font-family: 'Noto Sans';
+    font-style: normal;
+}
+
+.RecipeInformation{
+    margin-top: 3%;
+    margin-left:0%;
+    width: 80%;
+    display:grid;
+    gap: 5%;
+    font-weight: 400 !important;
+    font-size: 12px;
+    line-height: 25px;
+    align-items: center;
+    color: #000000;
+    background-color: #FFFF;
+}
+
+
+.createrecipe-container{
+    padding-left:10%;
+    width: 100%;
+    min-height: 200vh;
+    background-color: #EFEFF7;
+}
+
+.createrecipe h1{
+    padding-top: 2%;
+    font-family: 'Noto Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #000000;
+}
+
+.Ingredients{
+    background: #FFFF;
+    margin-top: 20%;
+    margin-left:10%;
+    margin-right: 10%;
+}
+.Ingredients h1{
+    margin-left:3%;
+    padding-top: 2%;
+}
+
+.ingredients-section{
+    margin-left:7%;
+    display:grid;
+    gap: 5%;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 12px;
+    line-height: 25px;
+    align-items: center;
+    color: #000000;
+}
+
+.recipetitle{
+    display: flex;
+    gap: 10%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.titletext{
+    border:none;
+    width: 60%;
+    background-color: #E9ECEF;
+}
+
+.recipeinfo{
+    display:flex;
+    gap: 3%;
+    margin-left: 5%;
+
+}
+.infotext{
+    border:none;
+    width: 60%;
+    background-color: #E9ECEF;
+}
+
+.introduction{
+    display:flex;
+    gap: 9%;
+    margin-left: 5%;
+
+}
+.introtext{
+    border:none;
+    width: 60%;
+    height: 20vw;
+    background-color: #E9ECEF;
+}
+.information{
+    display:flex;
+    gap: 10%;
+    margin-left: 5%;
+}
+
+.information select{
+    margin-left: -6.5%;
+    margin-top: 1.5%;
+    height: 5%;
+}
+
+.ingredients-section{
+    margin-left:7%;
+    display:grid;
+    gap: 3%;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400 !important;
+    font-size: 12px;
+    line-height: 25px;
+    align-items: center;
+    color: #000000;
+}
+
+.ingredients {
+    display: flex;
+    gap: 5%;
+    margin-left: 5%;
+}
+
+.AddSteps{
+    background-color: #FFFF;
+    margin-bottom: 10%;
+}
+
+.AddSteps h2{
+    margin-left: 5%;
+}
+

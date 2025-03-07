@@ -1,23 +1,27 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // ✅ useNavigate 가져오기
 import "../styles/Header.css";
 import LogoIcon from "../assets/logo.svg";
 import CreateImage from "../assets/create.svg";
 
 function Header() {
+    const navigate = useNavigate(); // ✅ useNavigate 사용
+
     return (
         <header className="header">
-            <div className="LogoContainer">
+            <div className="LogoContainer" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
                 <img src={LogoIcon} alt="logo" className="LogoIcon" />
                 <h1 className="logo">흑백 레시피</h1>
             </div>
-        <div className="buttons">
-            <button className="login">Login</button>
-            <button className="create">Create</button>
-            <img src={CreateImage} alt ="CreateImage" className = "CreateImage" />
-
-        </div>
-        <hr className="GrayLine" />
-      </header>
+            <div className="buttons">
+                <button className="login">Login</button>
+                <button className="create" onClick={() => navigate("/create")}>
+                    Create
+                </button>
+                <img src={CreateImage} alt="CreateImage" className="CreateImage" />
+            </div>
+            <hr className="GrayLine" />
+        </header>
     );
 }
 

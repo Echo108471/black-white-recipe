@@ -8,6 +8,8 @@ import Ingredients from "./components/Ingredients";
 import Home from "./components/Home";
 import Ranking from "./components/Ranking";
 import SearchBar from "./components/SearchBar";
+import Create from "./components/Create";
+import AddSteps from "./components/AddSteps";
 
 
 function App() {
@@ -23,17 +25,22 @@ function App() {
 
   return (
     <Router> 
-      <Header />
+    <div className="header">
+        <Header />    
       <div className = "header2">
-        <NavBar/> 
-        <SearchBar data={ingredients} />
+          <NavBar/> 
+          <SearchBar data={ingredients} />
+          <hr className="GrayLine1" />
       </div>
+    </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
         <Route path="/ingredients" element={<Ingredients />} />
         <Route path="/ranking" element={<Ranking />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/add-steps" element={<AddSteps />} />
       </Routes>
 
       {/*<div className="input-container">

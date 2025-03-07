@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "../styles/IngredientsCreateRecipe.css";
 
 function IngredientsCreateRecipe() {
-    // ✅ Store multiple ingredients in an array
+    // Store multiple ingredients in an array
     const [ingredients, setIngredients] = useState([
         { id: 1, name: "", amount: "", note: "" }
     ]);
 
-    // ✅ Function to add more ingredient input fields
+    // add more ingredient input fields
     const addMoreIngredient = () => {
         setIngredients([...ingredients, { id: Date.now(), name: "", amount: "", note: "" }]);
     };
 
-    // ✅ Function to update the ingredient state
+    // update the ingredient state
     const handleInputChange = (id, field, value) => {
         setIngredients(
             ingredients.map((ingredient) =>

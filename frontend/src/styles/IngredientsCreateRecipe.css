@@ -1,18 +1,29 @@
 .ingredients-container{
+    margin-top: 1.5%;
     margin-left: 5%;
     flex-direction: column;
     gap: 30px;
+    width: 70%;
 }
 
 .ingredients-container1{
     display: flex;
-    gap: 15%;
+    gap: 5%;
     margin-bottom: 2%;
 }
 
 .IngredientName{
     width: 30%;
 }
+
+.NumberOfIngredient{
+    width: 10%;
+}
+
+.note{
+    width: 34%;
+}
+
 
 .add-more-btn{
     margin-top: 20px;  /* ✅ 버튼과 입력 필드 사이 간격 추가 */
