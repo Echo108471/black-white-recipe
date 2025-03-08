@@ -9,6 +9,8 @@ import Ranking from "./components/Ranking";
 import SearchBar from "./components/SearchBar";
 import Create from "./components/Create";
 import AddSteps from "./components/AddSteps";
+import Footer from "./components/Footer";
+
 
 
 function App() {
@@ -41,15 +43,7 @@ function App() {
         <Route path="/add-steps" element={<AddSteps />} />
       </Routes>
 
-      {/*<div className="input-container">
-        <input 
-          type="text" 
-          value={newIngredient} 
-          onChange={(e) => setNewIngredient(e.target.value)}
-          placeholder="Add an ingredient"
-        />
-        <button onClick={addIngredient}>Add</button>
-  </div>*/}
+      <Footer/> 
     </Router>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/IngredientsCreateRecipe.css";
 
+
 function IngredientsCreateRecipe() {
     // Store multiple ingredients in an array
     const [ingredients, setIngredients] = useState([
