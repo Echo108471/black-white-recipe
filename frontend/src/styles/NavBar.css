@@ -1,16 +1,18 @@
-.navbar {
-    margin: 0px 0px 0px 60px; /*상우하좌*/
-    transform: translate(-50px);
+.navbar-container {
+    position: relative;
     display: flex;
     justify-content: left;
     align-items: left;
-    width: 800px;
+    width: 60%;
     font-family: 'Noto Sans';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
-    line-height: 27.24px;
-    border-bottom: gray;
+    margin-left: 5%;
+    margin-right: 20%;
+    padding-top: 1%;
+    max-width: 100vw !important;
+
 
 }
 
@@ -29,8 +31,6 @@
     position: relative;
     text-decoration: none;
     color: black;
-    padding: 10px 0;
-    border-radius: 5px;
 }
 
 .navbar ul li a::after {

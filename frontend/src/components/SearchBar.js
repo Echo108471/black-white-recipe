@@ -19,20 +19,11 @@ return (
        {/* <img src={SearchBackgound} alt="searchbackground" className="searchbackground" />*/}
     <input
         type="text"
-        /*placeholder="Search by Ingredients"*/
+        //placeholder="Search by Ingredients"
         value={searchTerm}
         onChange={handleSearch}
         className="search-input"
     />
-    {searchTerm && (
-        <ul className="search-results">
-        {filteredData.length > 0 ? (
-            filteredData.map((item, index) => <li key={index}>{item}</li>)
-        ) : (
-            <li className="no-results">No matching ingredients found.</li>
-        )}
-        </ul>
-    )}
     <img src={SearchIcon} alt ="searchicon" className="searchIcon"></img>
     </div>
     );

@@ -9,7 +9,6 @@ function NavBar() {
             <nav className="navbar">
                 <ul>
                     <li><Link to="/recipes">Recipes</Link></li>
-                    <li><Link to="/ingredients">Ingredients</Link></li>
                     <li><Link to="/">Home</Link></li>
                     <li><Link to="/ranking">Ranking</Link></li>
                 </ul>

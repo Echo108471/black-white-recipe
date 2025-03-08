@@ -4,7 +4,6 @@ import "./App.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Recipes from "./Recipes";
-import Ingredients from "./components/Ingredients";
 import Home from "./components/Home";
 import Ranking from "./components/Ranking";
 import SearchBar from "./components/SearchBar";
@@ -30,14 +29,13 @@ function App() {
       <div className = "header2">
           <NavBar/> 
           <SearchBar data={ingredients} />
-          <hr className="GrayLine1" />
       </div>
+      <hr className="GrayLine1" />
     </div>
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
-        <Route path="/ingredients" element={<Ingredients />} />
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/create" element={<Create />} />
         <Route path="/add-steps" element={<AddSteps />} />

@@ -17,8 +17,8 @@ function Header() {
                 <button className="login">Login</button>
                 <button className="create" onClick={() => navigate("/create")}>
                     Create
+                    <img src={CreateImage} alt="CreateImage" className="CreateImage" />
                 </button>
-                <img src={CreateImage} alt="CreateImage" className="CreateImage" />
             </div>
             <hr className="GrayLine" />
         </header>

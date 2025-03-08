@@ -1,0 +1,127 @@
+
+html{
+    font-family: 'Noto Sans';
+    font-style: normal;
+}
+.home-box {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background-image: url('../assets/home_background.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: white;
+    overflow: hidden; 
+    margin-top: 0.25%;
+}
+.home-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* ✅ 어두운 오버레이 */
+}
+
+.home-box h2{
+    color: white;
+    margin-left: 10%;
+    font-size: 48px;
+    z-index: 10;
+}
+.home-container h1{
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    color: #000000;
+}
+
+/* ✅ 전체 페이지 중앙 정렬 */
+.most-search{
+    padding-bottom: 5%;
+}
+
+.home-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+.most-card{
+    display: flex;
+    gap:10%;
+}
+
+.recipe-card {
+    width: 356px;
+    padding-bottom: 3%;
+    background: #EFEFF7;
+    border-radius: 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    justify-content: left;
+}
+
+
+.recipe-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+
+.recipe-title {
+    font-size: 24px;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    color: #000000;
+    text-align: left;
+    margin-left: 5%;
+}
+
+
+.recipe-summary {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    margin-left: 5%;
+}
+
+
+.view-recipe-btn {
+    background: #ff6347;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #000000;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    height: 29px;
+    width: 154px;
+    align-self: flex-start;
+    margin-left: 5%;
+
+}
+
+.view-recipe-btn:hover {
+    background: #e53dda;
+}
+
+.pop-search{
+    background: #EFEFF7;
+    width: 100%;
+    padding:5%
+}

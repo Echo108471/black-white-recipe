@@ -28,9 +28,7 @@ function Create() {
     };
 
     return (
-        <div className= "container">
         <div className="createrecipe-container"> 
-
             <div className="RecipeInformation">
                 <div className="recipetitle">
                     <h2>Recipe Title</h2>
@@ -99,12 +97,13 @@ function Create() {
                     addMoreIngredient={addMoreIngredient}
                 />
                 </div>
-                <div className="AddSteps">
+                </div>
+                <div className="AddSteps-wrapper">
+                <div className="AddSteps" >
                     <h2>Add Steps</h2>
                     <AddSteps/>
                 </div>
             </div>
-        </div>
         </div>
     );
 }
