@@ -1,0 +1,66 @@
+{
+    "ingredients": ["salt", "pepper", "garlic", "onion", "tomato", "basil", "chicken", "beef", "carrot", "potato"],
+    "recipes": [
+      {
+        "title": "Garlic Chicken",
+        "description": "A delicious garlic-infused chicken dish.",
+        "instructions": "Marinate chicken with garlic and salt. Grill until golden brown.",
+        "ingredients": ["chicken", "garlic", "salt"]
+      },
+      {
+        "title": "Tomato Basil Pasta",
+        "description": "A fresh tomato and basil pasta.",
+        "instructions": "Boil pasta. Sauté tomatoes and basil. Mix together and serve.",
+        "ingredients": ["tomato", "basil", "salt"]
+      },
+      {
+        "title": "Beef Stew",
+        "description": "A hearty beef stew with carrots and potatoes.",
+        "instructions": "Brown beef. Add carrots, potatoes, and simmer until tender.",
+        "ingredients": ["beef", "carrot", "potato", "salt", "pepper"]
+      },
+      {
+        "title": "Carrot Soup",
+        "description": "A creamy carrot soup with onion and garlic.",
+        "instructions": "Sauté onions and garlic. Add carrots and blend with water.",
+        "ingredients": ["carrot", "onion", "garlic", "salt"]
+      },
+      {
+        "title": "Basil Chicken Stir-fry",
+        "description": "A quick stir-fried chicken dish with basil and garlic.",
+        "instructions": "Stir-fry chicken with garlic and basil. Serve hot.",
+        "ingredients": ["chicken", "basil", "garlic", "pepper"]
+      },
+      {
+        "title": "Potato Wedges",
+        "description": "Crispy oven-baked potato wedges with salt and pepper.",
+        "instructions": "Cut potatoes into wedges. Bake with salt and pepper until crisp.",
+        "ingredients": ["potato", "salt", "pepper"]
+      },
+      {
+        "title": "Tomato Soup",
+        "description": "A rich tomato soup flavored with basil and garlic.",
+        "instructions": "Blend tomatoes with basil and garlic. Simmer and serve.",
+        "ingredients": ["tomato", "basil", "garlic", "salt"]
+      },
+      {
+        "title": "Garlic Roasted Beef",
+        "description": "Juicy beef roast seasoned with garlic and pepper.",
+        "instructions": "Season beef with garlic and pepper. Roast until done.",
+        "ingredients": ["beef", "garlic", "pepper"]
+      },
+      {
+        "title": "Onion Stir-fry",
+        "description": "A simple onion stir-fry with garlic and salt.",
+        "instructions": "Sauté onions with garlic and salt until caramelized.",
+        "ingredients": ["onion", "garlic", "salt"]
+      },
+      {
+        "title": "Spicy Chicken Soup",
+        "description": "A spicy chicken soup with tomato and pepper.",
+        "instructions": "Boil chicken with tomato and pepper. Serve hot.",
+        "ingredients": ["chicken", "tomato", "pepper", "salt"]
+      }
+    ]
+  }
+  
