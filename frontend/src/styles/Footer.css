@@ -1,8 +1,67 @@
+
+.footers{
+    background-color: black;
+    color: white;
+}
 .footer{
-    padding: 5%;
+    padding: 2%;
     padding-left: 10%;
     padding-right: 10%;
     display: flex;
-    justify-content: space-between; 
+    background-color: black;
+    color: white;
+}
 
+.footer ul{
+    display: flex;
+    margin-top: 2.5%;
+    margin-left: 5%;
+    gap: 80%;
+}
+
+.footer ul li{
+    display: flex;
+    display: flex;
+}
+
+
+.footer ul li a{
+    display: flex;
+    margin-top: 1%;
+    text-decoration: none;
+    color: white;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px;
+    display: flex;
+}
+
+.Icons{
+    display: flex;
+    gap: 10%;
+    margin-left: 50%;
+}
+
+.Icons img{
+    width: 30px;
+}
+
+.WhiteLine{
+    width: 100vw;  
+    height: 2px; 
+    background-color: #ffffff;
+    border: none;
+}
+
+.BnWFooter{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    background-color: black;  
+    padding-left: 10%;
+    padding-bottom: 1%;
 }

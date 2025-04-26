@@ -19,6 +19,11 @@
     gap: 10%;
 }
 
+.step-container h2{
+    width:100px;
+    flex-shrink: 0;
+}
+
 .step-description {
     width: 100%;
     height: 80px;

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
+import SearchNav from "./components/SearchNav";
 import Recipes from "./Recipes";
 import Home from "./components/Home";
 import Ranking from "./components/Ranking";
@@ -30,7 +31,7 @@ function App() {
         <Header />    
       <div className = "header2">
           <NavBar/> 
-          <SearchBar data={ingredients} />
+          <SearchNav />
       </div>
       <hr className="GrayLine1" />
     </div>
