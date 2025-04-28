@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/IngredientsCreateRecipe.css";
+import Plus from "../assets/plus.svg";
+
 
 
 function IngredientsCreateRecipe() {
@@ -31,7 +33,7 @@ function IngredientsCreateRecipe() {
                         value={ingredient.name}  
                         onChange={(e) => handleInputChange(ingredient.id, "name", e.target.value)}
                         className="IngredientName"
-                        placeholder="Ingredient Name"
+                        placeholder="e.g.) Pork"
                     />
 
                     <input
@@ -39,7 +41,7 @@ function IngredientsCreateRecipe() {
                         value={ingredient.amount} 
                         onChange={(e) => handleInputChange(ingredient.id, "amount", e.target.value)}
                         className="NumberOfIngredient"
-                        placeholder="Amount"
+                        placeholder="e.g.) 10 (servings)"
                     />
 
                     <input
@@ -47,13 +49,14 @@ function IngredientsCreateRecipe() {
                         value={ingredient.note}  
                         onChange={(e) => handleInputChange(ingredient.id, "note", e.target.value)}
                         className="note"
-                        placeholder="Note"
+                        placeholder="e.g.) g, ml (etc.)"
                     />
                 </div>
             ))}
-
+            
             <button onClick={addMoreIngredient} className="add-more-btn">
-                Add More Ingredient
+            <img src={Plus} alt="Plus" />
+                Add
             </button>
         </div>
     );

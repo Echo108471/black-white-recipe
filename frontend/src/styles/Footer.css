@@ -37,6 +37,25 @@
     display: flex;
 }
 
+.navbar ul li a {
+    position: relative;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+.navbar ul li a::after {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: rgb(255, 255, 255);
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.navbar ul li a:hover::after {
+    width: 100%; 
+}
+
 .Icons{
     display: flex;
     gap: 10%;

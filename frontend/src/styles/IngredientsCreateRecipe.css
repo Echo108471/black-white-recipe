@@ -1,6 +1,5 @@
 .ingredients-container{
     margin-top: 1.5%;
-    margin-left: 5%;
     flex-direction: column;
     gap: 30px;
     width: 70%;
@@ -14,14 +13,39 @@
 
 .IngredientName{
     width: 30%;
+    background: #CDD9E5;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 388px;
+    height: 73px;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #8E9CA7;
+    padding-left: 3%;
+    border:none;
 }
 
 .NumberOfIngredient{
-    width: 10%;
+    border: none;
+    width: 151px;
+    height: 73px;
+    background: #CDD9E5;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding-left: 1rem;
 }
 
 .note{
-    width: 34%;
+    border:none;
+    width: 151px;
+    height: 73px;
+    background: #CDD9E5;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding-left: 1%;
 }
 
 
@@ -31,4 +55,15 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+    background-color: #FFFF;
+    margin-top: -10%;
+    margin-left: 105%;
 }

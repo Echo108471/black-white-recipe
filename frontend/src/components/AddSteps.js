@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "../styles/AddSteps.css"; // CSS 파일 추가
+import "../styles/AddSteps.css"; 
+import Plus from "../assets/plus.svg";
+
 
 function AddSteps() {
     const [steps, setSteps] = useState([
@@ -66,10 +68,11 @@ function AddSteps() {
                         value={step.description}
                         onChange={(e) => handleDescriptionChange(step.id, e.target.value)}
                         className="step-description"
+                        placeholder={"e.g.) Remove the fat from the beef and cut it into appropriate sizes"}
                     />
-                    <label htmlFor={`file-upload-${step.id}`} className="custom-file-upload1">
+                    {/* <label htmlFor={`file-upload-${step.id}`} className="custom-file-upload1">
                         Upload Image
-                    </label>
+                    </label> */}
                     <input
                         id={`file-upload-${step.id}`}
                         type="file"
@@ -82,29 +85,9 @@ function AddSteps() {
             ))}
 
             <button onClick={addNewStep} className="add-step-btn">
+            <img src={Plus} alt="Plus" />
                 Add Step
             </button>
-
-            {/* ✅ 최종 사진 업로드 */}
-            <div className="photo">
-                <h2>Final Photos</h2>
-                <label htmlFor="final-image-upload" className="custom-file-upload2">
-                    Upload Final Image
-                </label>
-                <input
-                    id="final-image-upload"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => handleFinalImageUpload(e.target.files[0])}
-                    className="final-image-upload"
-                />
-                {finalImage && <p>{finalImage.name}</p>}
-            </div>
-            {/* ✅ 저장 & 취소 버튼 추가 */}
-            <div className="buttons-container">
-                <button onClick={handleSave} className="save-btn">Save</button>
-                <button onClick={handleCancel} className="cancel-btn">Cancel</button>
-            </div>
         </div>
     );
 }
