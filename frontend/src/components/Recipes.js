@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RecipeCard from "./AllRecipeCard"; 
 import "../styles/Recipes.css";  
 import PastaImage from "../assets/pasta.png";
@@ -8,37 +8,42 @@ import Heart from "../assets/heart.svg";
 import SearchIcon from "../assets/searchicon.svg"
 import LeftArrow from "../assets/Leftarrow.svg"
 import RightArrow from "../assets/RightArrow.svg"
+import { useLocation } from "react-router-dom";
 
 
 
 function AllRecipe() {
-    const [RecipesearchTerm, RecipesetSearchTerm] = useState("");
+    const [recipes, setRecipes] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const [RecipesearchTerm, RecipesetSearchTerm] = useState(queryParams.get("search") || "");
 
     const recipesPerPage = 16;
-    const recipes = [
-    {
-        id: 1,
-        image: PastaImage,
-        title: " Pasta",
-        summary: "Cool recipe to eat with friends in the morning.",
-        rate: 4.8,
-    },
-    {
-        id: 2,
-        image: WaffleImage,
-        title: "Belgian Waffles",
-        summary: "Cool recipe to eat with friends in the morning.",
-        rate: 4.8,
-    },
-    {
-        id: 3,
-        image: SteakImage,
-        title: "Garlic Buffalo Wings",
-        summary: "Cool recipe to eat with friends in the morning.",
-        rate: 4.8,
-    }
-];
+    useEffect(() => {
+        const ingredients = queryParams.get("ingredients");
+        const url = ingredients
+            ? `http://localhost:8000/filtered-recipes/?filter_terms=${ingredients}`
+            : `http://localhost:8000/recipes`;
+    
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("🧪 API Response:", data);
+                // filtered-recipes는 객체 배열이 아니라 객체 형태로 들어오는 경우 대응
+                if (Array.isArray(data)) {
+                    setRecipes(data);
+                } else if (Array.isArray(data.results)) {
+                    setRecipes(data.results);
+                } else {
+                    setRecipes([]); // fallback to empty list
+                }
+            })
+            .catch((err) => console.error("Failed to fetch recipes:", err));
+    }, [location.search]);
+    
+    
+    
     const filteredRecipes = recipes.filter((recipe) =>
         recipe.title.toLowerCase().includes(RecipesearchTerm.toLowerCase())
     );
@@ -67,7 +72,7 @@ function AllRecipe() {
                 {filteredRecipes.map((recipe) => (
                     <RecipeCard
                         key={recipe.id}
-                        image={recipe.image} className="recipe-image"
+                        image={`http://localhost:8000${recipe.image_url}`} className="recipe-image"
                         title={recipe.title}
                         // summary={recipe.summary}
                         rate={recipe.rate}

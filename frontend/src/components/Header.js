@@ -11,7 +11,7 @@ function Header() {
         <header className="header">
             <div className="LogoContainer" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
                 <img src={LogoIcon} alt="logo" className="LogoIcon" />
-                <h1 className="logo">흑백 레시피</h1>
+                <h1 className="logo">BnW Recipe</h1>
             </div>
             <div className="buttons">
                 <button className="login">Login</button>

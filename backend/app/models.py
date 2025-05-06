@@ -37,6 +37,7 @@ class Recipe(Base):
     title = Column(String, index=True)
     description = Column(Text)
     instructions = Column(Text)
+    image_url = Column(String, nullable=True)
     # author_id = Column(Integer, ForeignKey('users.id'))
 
     # author = relationship('User', back_populates='recipes')

@@ -11,6 +11,8 @@ import SearchBar from "./components/SearchBar";
 import Create from "./components/Create";
 import AddSteps from "./components/AddSteps";
 import Footer from "./components/Footer";
+import About from "./components/About";
+
 
 
 
@@ -39,7 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipes" element={<Recipes />} />
-        <Route path="/ranking" element={<Ranking />} />
+        <Route path="/About" element={<About />} />
         <Route path="/create" element={<Create />} />
         <Route path="/add-steps" element={<AddSteps />} />
       </Routes>

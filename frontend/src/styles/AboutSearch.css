@@ -1,4 +1,4 @@
-.blur-overlay {
+.blur-overlay-about {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,14 +9,14 @@
     z-index: 999;   /* search-bar보다 낮거나 적절히 조정 */
 }
 
-.close-btn{
+.close-btn-about{
     color:#ffffff;
     transform: translate(700px, -40px);
     font-weight: bolder;
     cursor: pointer;
 }
 
-.search-bar {
+.search-bar-about {
     position: fixed;
     bottom: -1000px;
     left: 0;
@@ -30,34 +30,40 @@
     z-index: 1000;
 }
 
-.searchI{
+.searchI-about{
     transform: translate(1260px, -40px);
 }
 
-.search-bar.open {
+.search-bar-about.open {
     bottom: 0;
 }
 
-.search-toggle {
+.search-toggle-about {
     margin-top: 5px;
-    margin-right: 60px;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    padding-left: 100px;
-    padding-right: -20px;
-    width: 20rem;
-    background: #ffffff;
-    color: rgb(0, 0, 0);
+    margin-left: 20rem;
+    margin-bottom: 3rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: auto;
+    background: #000000;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 50px;
     cursor: pointer;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 27px;
+    color: #FFFFFF;
 }
 
-.search-toggle img{
+.search-toggle-about img{
     margin-right:-230px;
 }
 
-.searching {
+.searching-about {
     border-radius: 20px;
     width: 80%;
     height: 3rem;
@@ -70,19 +76,19 @@
     background-color: #ffffff;  
 }
 
-.popular-keywords{
+.popular-keywords-about{
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 4%;
     margin-top: -1%;
 }
-.popular-keywords ul{
+.popular-keywords-about ul{
     list-style: none;
     padding: 0;
 }
 
-.popular-keywords li,
-.inmyfridge li {
+.popular-keywords-about li,
+.inmyfridge-about li {
     display: inline-block;
     margin: 5px;
     padding: 5px 10px;
@@ -92,18 +98,18 @@
     color: #ffffff;
 }
 
-.popular-keywords li:hover {
+.popular-keywords-about li:hover {
     background: #ffffff;
     color: black;
     border: 1px solid black;
 }
 
-.added-ingredients li {
+.added-ingredients-about li {
     position: relative;
     padding-right: 25px;
 }
 
-.delete-btn {
+.delete-btn-about {
     background: none;
     border: none;
     cursor: pointer;
@@ -114,7 +120,7 @@
     color: #ffffff;
 }
 
-.inmyfridge{
+.inmyfridge-about {
     background-color: #ffffff;
     width: 78.5%;
     margin-left: 10%;
@@ -125,25 +131,25 @@
     border: 4px solid black;
 }
 
-.inmyfridge img {
+.inmyfridge-about img {
     width: 60px;
     height: auto;
     margin-top: 0%;
 }
 
-.inmyfridge h4{
+.inmyfridge-about h4{
     font-size: 23px;
     margin-top: -4%;
     margin-left: 5%;
 }
 
-.inmyfridge li {
+.inmyfridge-about li {
     border: 1.5px solid black;
     background-color: black;
     color: #ffffff;
 }
 
-.cook-button button {
+.cook-button-about button {
     padding: 30px 70px 30px 70px;
     height: 64px;
     background-color: #D9D9D9;
@@ -160,7 +166,7 @@
     transition: background 0.3s ease;
 }
 
-.cook-button button:hover {
+.cook-button-about button:hover {
     background-color: #9c9c9c;
 }
 

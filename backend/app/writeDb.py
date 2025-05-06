@@ -10,7 +10,7 @@ from .models import Base, Recipe, Ingredient
 # Ensure tables exist
 Base.metadata.create_all(bind=engine)
 
-file_path = "C:/Users/Eugene Cho/Desktop/black-white-recipe/backend/app/tenRecipes.json"
+file_path = "C:/Users/stephanie/Desktop/black-white-recipe/backend/app/tenRecipes.json"
 
 def load_data_from_json(file_path):
     with open(file_path, "r", encoding="utf-8") as file:

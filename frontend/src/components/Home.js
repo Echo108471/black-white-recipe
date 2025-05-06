@@ -1,7 +1,7 @@
 /* Home.js */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
-import RecipeCard from "./RecipeCard";
+import RecipeCardHome from "./RecipeCardHome.js";
 import HomeBackground from "../assets/home_background.svg"; 
 import PastaImage from "../assets/pasta.png";
 import WaffleImage from "../assets/waffles.png";
@@ -9,30 +9,16 @@ import SteakImage from "../assets/steak.png";
 import SearchBox from "./SearchBox";
 
 
-// dummy food datas
-const recipes = [
-    {
-        id: 1,
-        image: PastaImage,
-        title: " Pasta",
-        summary: "Cool recipe to eat with friends in the morning.",
-    },
-    {
-        id: 2,
-        image: WaffleImage,
-        title: "Belgian Waffles",
-        summary: "Cool recipe to eat with friends in the morning.",
-    },
-    {
-        id: 3,
-        image: SteakImage,
-        title: "Garlic Buffalo Wings",
-        summary: "Cool recipe to eat with friends in the morning.",
-    }
-];
-
-
 function Home() {
+    const [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:8000/recipes")
+            .then((res) => res.json())
+            .then((data) => setRecipes(data))
+            .catch((err) => console.error("Failed to fetch recipes:", err));
+    }, []);
+
     return (
         <div className="home-container">
             <div className="home-box">
@@ -42,11 +28,11 @@ function Home() {
             <h1>Most searched recipes</h1>
                 <div className="most-card">
                     {recipes.map((recipe) => (
-                        <RecipeCard
+                        <RecipeCardHome
                             key={recipe.id}
-                            image={recipe.image}
+                            image={`http://localhost:8000${recipe.image_url}`} className="recipe-image"
                             title={recipe.title}
-                            summary={recipe.summary}
+                            summary={recipe.description}
                         />
                     ))}
                 </div>

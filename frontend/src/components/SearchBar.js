@@ -16,7 +16,7 @@ const filteredData = data.filter((item) =>
 
 return (
     <div className="search-container">
-       {/* <img src={SearchBackgound} alt="searchbackground" className="searchbackground" />*/}
+        {/* <img src={SearchBackgound} alt="searchbackground" className="searchbackground" />*/}
     <input
         type="text"
         //placeholder="Search by Ingredients"

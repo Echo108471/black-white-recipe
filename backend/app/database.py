@@ -31,3 +31,8 @@ def get_db_connection():
         user=DB_USER,
         password=DB_PASSWORD
     )
+    
+from app.models import Base
+from app.database import engine
+
+Base.metadata.create_all(bind=engine)

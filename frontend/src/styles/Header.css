@@ -17,12 +17,19 @@ body {
     font-size: 45px;
     line-height: 45px;
     color: #000000;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 49px;
+    color: #000000;
 }
 
 .LogoIcon{
     position: absolute;
-    left: 105px;
-    top: 48px;
+    left: 118px;
+    top: 52px;
+    width: 60px;
 }
 
 .buttons{
@@ -49,7 +56,7 @@ body {
 .create{
     box-sizing: border-box;
     margin-top: 5%;
-    margin-left: 4%;
+    margin-left: 2%;
     width: 118px;
     height: 38px;
     background: #FFFFFF;

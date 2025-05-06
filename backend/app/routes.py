@@ -6,9 +6,10 @@ from .models import Ingredient, Recipe, recipe_ingredient
 from .filter import recipe_filter_query
 from pydantic import BaseModel
 from typing import List
-
-
-
+from fastapi import UploadFile, File, Form
+import shutil
+import os
+import json
 
 class RecipeCreate(BaseModel):
     title: str
@@ -31,6 +32,7 @@ def get_all_recipes(db: Session = Depends(get_db)):
         "title": recipe.title,
         "description": recipe.description,
         "instructions": recipe.instructions,
+        "image_url": recipe.image_url,
         "ingredients": [ingredient.name for ingredient in recipe.ingredients]
     } for recipe in data]
 
@@ -53,44 +55,55 @@ def filter_recipe_endpoint(filter_terms: str, db: Session = Depends(get_db)):
     if not filter_terms_list:
         raise HTTPException(status_code=400, detail="At least one filter term must be provided.")
 
-    return recipe_filter_query(db, filter_terms_list)
+    return recipe_filter_query(db, filter_terms_list)  # <-- 여기가 꼭 List[Dict] 형태로 되어야 함
 
 @router.post("/create_recipes", status_code=201)
-def create_recipe(recipe_data: RecipeCreate, db: Session = Depends(get_db)):
-    """
-    Adds a new recipe to the database.
-    """
-    # Check if a recipe with the same title already exists
-    existing_recipe = db.query(Recipe).filter(Recipe.title == recipe_data.title).first()
+async def create_recipe(
+    title: str = Form(...),
+    description: str = Form(...),
+    instructions: str = Form(...),
+    ingredients: str = Form(...),  # JSON string
+    image: UploadFile = File(...),
+    db: Session = Depends(get_db)
+):
+    # 중복 검사
+    existing_recipe = db.query(Recipe).filter(Recipe.title == title).first()
     if existing_recipe:
         raise HTTPException(status_code=400, detail="A recipe with this title already exists.")
 
-    # Create new recipe instance
+    # 이미지 저장
+    image_url = None
+    if image:
+        os.makedirs("static/images", exist_ok=True)
+        file_path = f"static/images/{image.filename}"
+        with open(file_path, "wb") as f:
+            shutil.copyfileobj(image.file, f)
+        image_url = f"/static/images/{image.filename}"
+
+    # DB 객체 생성
     new_recipe = Recipe(
-        title=recipe_data.title,
-        description=recipe_data.description,
-        instructions=recipe_data.instructions
+        title=title,
+        description=description,
+        instructions=instructions,
+        image_url=image_url
     )
     db.add(new_recipe)
-    db.flush()  # Ensures new_recipe.id is available before proceeding
+    db.flush()
 
-    # Ensure ingredients exist and link them
+    # 재료 처리
+    ingredient_names = json.loads(ingredients)
     ingredient_objects = []
-    existing_ingredients = {ing.name: ing for ing in db.query(Ingredient).filter(Ingredient.name.in_(recipe_data.ingredients)).all()}
-    
-    for ingredient_name in recipe_data.ingredients:
-        if ingredient_name in existing_ingredients:
-            ingredient = existing_ingredients[ingredient_name]
-        else:
-            ingredient = Ingredient(name=ingredient_name)
+    existing_ingredients = {ing.name: ing for ing in db.query(Ingredient).filter(Ingredient.name.in_(ingredient_names)).all()}
+
+    for name in ingredient_names:
+        ingredient = existing_ingredients.get(name)
+        if not ingredient:
+            ingredient = Ingredient(name=name)
             db.add(ingredient)
-            db.flush()  # Ensures ingredient.id is assigned
+            db.flush()
         ingredient_objects.append(ingredient)
 
-    # Link ingredients to the recipe
     new_recipe.ingredients.extend(ingredient_objects)
-
-    # Commit the transaction
     db.commit()
 
     return {
@@ -98,5 +111,6 @@ def create_recipe(recipe_data: RecipeCreate, db: Session = Depends(get_db)):
         "title": new_recipe.title,
         "description": new_recipe.description,
         "instructions": new_recipe.instructions,
-        "ingredients": [ingredient.name for ingredient in ingredient_objects]
+        "image_url": new_recipe.image_url,
+        "ingredients": [i.name for i in ingredient_objects]
     }

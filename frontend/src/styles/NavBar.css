@@ -32,14 +32,15 @@
 .navbar ul li a {
     position: relative;
     text-decoration: none;
-    color: black!important;
+    color: black !important;
+    display: inline-block; 
 }
 
 .navbar ul li a::after {
     content: '';
     width: 0%;
     height: 2px;
-    background: black;
+    background: black!important;
     display: block;
     margin: auto;
     transition: 0.5s;

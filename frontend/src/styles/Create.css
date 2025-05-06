@@ -316,3 +316,7 @@ html, body {
     transform: translateY(-2px);
     opacity: 0.9;
 }
+
+.preview-image{
+    width: 10rem;
+}

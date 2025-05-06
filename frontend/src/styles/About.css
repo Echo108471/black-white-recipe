@@ -1,0 +1,70 @@
+.AboutImg {
+    filter: brightness(60%);
+    z-index: 0;
+}
+
+.AboutHead{
+    position: relative;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 15px;
+    background-color: black;
+    color: #ffff;
+    width: 280px;
+    margin-top: -3%;
+    z-index: 1;
+    margin-left: 13%;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 0.01px;
+    padding-bottom: 0.01px;
+}
+
+.AboutBody{
+    width: 74%;
+    margin-left: 13%;
+    margin-top: 5%;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 35px;
+    color: #000000;
+}
+
+.AboutBody h2{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.AboutEnd{
+    background: #D9D9D9;
+    padding-top: 3%;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.AboutEnd h2{
+    margin-right: 25%;
+    margin-left: 21%;
+}
+
+.AboutEnd p{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 35px;
+    text-align: center;
+    color: #000000;
+}
+
+.cook-button.about-style button {
+    background-color: #333;
+  }
+  
+  .cook-button.about-style button:hover {
+    background-color: #333;
+  }
+  

@@ -5,22 +5,31 @@ from .models import Recipe, Ingredient, recipe_ingredient
 from typing import List, Dict
 
 def recipe_filter_query(db: Session, filter_terms: List[str]) -> List[Dict]:
-    """
-    Returns all recipes and their ingredients. Filtering is handled on the frontend.
-    """
+    # Get all recipes that include **all** of the filter_terms
+    subquery = (
+        db.query(recipe_ingredient.c.recipe_id)
+        .join(Ingredient, recipe_ingredient.c.ingredient_id == Ingredient.id)
+        .filter(Ingredient.name.in_(filter_terms))
+        .group_by(recipe_ingredient.c.recipe_id)
+        .having(func.count(Ingredient.id) == len(filter_terms))
+        .subquery()
+    )
 
     query = (
-        db.query(
-            Recipe.id,
-            Recipe.title,
-            Recipe.description,
-            Recipe.instructions,
-            func.array_agg(Ingredient.name).label("ingredients"),
-        )
-        .join(recipe_ingredient, Recipe.id == recipe_ingredient.c.recipe_id)
-        .join(Ingredient, recipe_ingredient.c.ingredient_id == Ingredient.id)
-        .group_by(Recipe.id)
+    db.query(
+        Recipe.id,
+        Recipe.title,
+        Recipe.description,
+        Recipe.instructions,
+        Recipe.image_url,  # ✅ 요거 추가!
+        func.array_agg(Ingredient.name).label("ingredients"),
     )
+    .join(recipe_ingredient, Recipe.id == recipe_ingredient.c.recipe_id)
+    .join(Ingredient, recipe_ingredient.c.ingredient_id == Ingredient.id)
+    .group_by(Recipe.id)
+    .having(func.array_agg(Ingredient.name).op("@>")(filter_terms))
+)
+
 
     data = query.all()
 
@@ -33,7 +42,8 @@ def recipe_filter_query(db: Session, filter_terms: List[str]) -> List[Dict]:
             "title": row[1],
             "description": row[2],
             "instructions": row[3],
-            "ingredients": row[4],
+            "image_url": row[4],
+            "ingredients": row[5],
         }
         for row in data
     ]

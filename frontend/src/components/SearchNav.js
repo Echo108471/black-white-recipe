@@ -6,7 +6,7 @@ import v from "../assets/v.svg"
 import { useNavigate } from 'react-router-dom';
 
 
-const SearchNav = () => {
+const SearchNav = ({ variant }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [ingredients, setIngredients] = useState([]);
@@ -45,57 +45,57 @@ const handleSearchRecipes = () => {
 
   return (
     <div className="search-wrapper">
-    {isOpen && <div className="blur-overlay"></div>}
-    <button className="search-toggle" onClick={() => setIsOpen(!isOpen)}>
-        {/* {isOpen ? 'Close' : 'Add Ingredients'} */}
-        <img src={SearchIcon} alt ="searchicon" className="searchIcon"></img>
-    </button>
-    <div className={`search-bar ${isOpen ? 'open' : ''}`}>
-    <div className="close-btn" onClick={() => setIsOpen(false)}>
-        <img src={v} alt ="v" className="v"></img>
-    </div>
+      {isOpen && <div className="blur-overlay"></div>}
+      
+      <button className="search-toggle" onClick={() => setIsOpen(!isOpen)}>
+        <img src={SearchIcon} alt="searchicon" className="searchIcon" />
+      </button>
+
+      <div className={`search-bar ${isOpen ? 'open' : ''}`}>
+        <div className="close-btn" onClick={() => setIsOpen(false)}>
+          <img src={v} alt="v" className="v" />
+        </div>
 
         <form onSubmit={handleAddIngredient}>
-        <input 
+          <input 
             type="text"
-            className='searching'
+            className="searching"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Add more items"
-        />
-        <img src={SearchIcon} alt ="searchicon" className="searchI"></img>
-
+          />
+          <img src={SearchIcon} alt="searchicon" className="searchI" />
         </form>
 
         <div className="popular-keywords">
-            <ul>
-                {popularKeywords.map((item, idx) => (
-                <li key={idx} onClick={() => addIngredient(item)}>
-                    {item}
-                </li>
+          <ul>
+            {popularKeywords.map((item, idx) => (
+              <li key={idx} onClick={() => addIngredient(item)}>
+                {item}
+              </li>
             ))}
-            </ul>
+          </ul>
         </div>
 
         <div className="inmyfridge">
-        <img src={fridge} alt ="fridge" className="fridge"></img>
-            <h4>In My Fridge</h4>
-            <ul>
-                {ingredients.map((item, idx) => (
-                <li key={idx}>
-                    {item}
-                    <button className="delete-btn" onClick={() => handleDelete(item)}>x</button>
-                </li>
-                ))}
-            </ul>
+          <img src={fridge} alt="fridge" className="fridge" />
+          <h4>In My Fridge</h4>
+          <ul>
+            {ingredients.map((item, idx) => (
+              <li key={idx}>
+                {item}
+                <button className="delete-btn" onClick={() => handleDelete(item)}>x</button>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <div className="cook-button">
-            <button onClick={handleSearchRecipes}>Let's Go Cook!</button>
+        <div className={`cook-button ${variant === 'about' ? 'about-style' : ''}`}>
+          <button onClick={handleSearchRecipes}>Let's Go Cook!</button>
         </div>
-        </div>
+      </div>
     </div>
-    );
+  );
 };
 
 export default SearchNav;

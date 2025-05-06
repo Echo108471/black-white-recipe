@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/SearchBox.css";
 import SearchingIcon from "../assets/searchingicon.svg";
+import { useNavigate } from "react-router-dom";
 
 const dummyPopularSearches = ["chicken", "cookies", "lasagna", "pancakes", "pasta", "salad", "steak"]; // dummy 
 
@@ -12,14 +13,16 @@ function SearchBox() {
     };
 
     // auto enter if you click pop searches
-    const handlePopularSearchClick = (query) => {
-        setSearchQuery(query);
-    };
-
+    const navigate = useNavigate();
     const handleSearchClick = () => {
         if (searchQuery.trim() !== "") {
-            console.log(`🔍 Searching for: ${searchQuery}`);
+            navigate(`/recipes?search=${encodeURIComponent(searchQuery)}`);
         }
+    };
+
+    const handlePopularSearchClick = (query) => {
+        setSearchQuery(query);
+        navigate(`/recipes?search=${encodeURIComponent(query)}`);
     };
 
     return (

@@ -61,7 +61,7 @@ html{
     gap:10%;
 }
 
-.recipe-card {
+.recipe-card-Home {
     width: 356px;
     padding-bottom: 3%;
     background: #EFEFF7;
@@ -71,7 +71,7 @@ html{
 }
 
 
-.recipe-image {
+.recipe-image-Home {
     width: 100%;
     height: 180px;
     object-fit: cover;
@@ -79,7 +79,7 @@ html{
 }
 
 
-.recipe-title {
+.recipe-title-Home {
     font-size: 24px;
     font-family: 'Noto Sans';
     font-style: normal;
@@ -90,7 +90,7 @@ html{
 }
 
 
-.recipe-summary {
+.recipe-summary-Home {
     font-size: 14px;
     color: #666;
     margin-bottom: 10px;
@@ -98,7 +98,7 @@ html{
 }
 
 
-.view-recipe-btn {
+.view-recipe-btn-Home {
     background: #ff6347;
     color: white;
     border: none;
@@ -116,7 +116,7 @@ html{
 
 }
 
-.view-recipe-btn:hover {
+.view-recipe-btn-Home:hover {
     background: #8585fe;
 }
 

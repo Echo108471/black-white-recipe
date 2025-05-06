@@ -18,6 +18,10 @@ function Create() {
     const [ingredients, setIngredients] = useState([
         { id: 1, name: "", amount: "", note: "" }
     ]);
+    const [steps, setSteps] = useState([
+        { id: 1, description: "", image: null }
+    ]);
+
 
     const addMoreIngredient = () => {
         setIngredients([...ingredients, { id: Date.now(), name: "", amount: "", note: "" }]);
@@ -54,14 +58,39 @@ const handleSave = () => {
     alert("Recipe saved as draft!");
 };
 
-const handlePublish = () => {
-    console.log("Recipe saved and published!");
-    alert("Recipe saved and published!");
-};
-
-
-
-return (
+const handlePublish = async () => {
+    const formData = new FormData();
+    formData.append("title", recipeTitle);
+    formData.append("description", recipeInfo);
+    formData.append("instructions", steps.map((s, i) => `Step ${i + 1}: ${s.description}`).join("\n\n"));
+    
+    const ingredientList = ingredients.map((i) => i.name).filter((name) => name.trim() !== "");
+    formData.append("ingredients", JSON.stringify(ingredientList));
+  
+    if (image) {
+      formData.append("image", image);
+    }
+  
+    try {
+      const response = await fetch("http://localhost:8000/create_recipes", {
+        method: "POST",
+        body: formData,
+      });
+  
+      if (response.ok) {
+        alert("✅ Recipe saved and published!");
+        navigate("/recipes");
+      } else {
+        const error = await response.json();
+        alert(`❌ Error: ${error.detail}`);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("❌ Failed to publish recipe.");
+    }
+  };
+  
+  return (
     <section className="createrecipe-container"> 
         <div className="RecipeInformation">
             <div className="left">
@@ -151,7 +180,7 @@ return (
                             e.g.) Marinate for 10 minutes ▷ Marinate lightly for 10 minutes.<br></br>
                             Garlic needs to be marinated ▷ Marinate garlic thoroughly to eliminate the spicy taste.
                             </p>
-                        <AddSteps/>
+                            <AddSteps steps={steps} setSteps={setSteps} />
                     </div>
                 </div>
                 <div className="button-group">
