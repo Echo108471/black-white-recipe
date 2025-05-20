@@ -13,6 +13,7 @@
     height: auto;
     border-radius: 12px;
     height: 21rem;
+    padding-bottom: 1.5rem;
 }
 
 .like-btn{
@@ -32,3 +33,31 @@
     top:-4rem;
     left: 1rem;
 }
+
+.star-icon{
+    width: 1rem;
+    height: auto;
+}
+
+.view-recipe-btn-recipe{
+    margin-left: 10.5rem;
+    margin-top: 1rem;
+    background: #000000;
+    border-radius: 20px;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 25px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.view-recipe-btn-recipe:hover{
+    background-color: #484848;
+}
+
+.rate-text, .rating-count{
+    margin-left: 1rem;
+}
+

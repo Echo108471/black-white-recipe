@@ -4,6 +4,7 @@
     padding-top: 1%;
     background-color: #EFEFF7;
     min-height: 200vh;
+    max-width: 100vw !important;
 }
 
 

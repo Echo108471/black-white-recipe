@@ -1,6 +1,8 @@
 .AboutImg {
     filter: brightness(60%);
     z-index: 0;
+    margin-left: 0%;
+    width: 100%;
 }
 
 .AboutHead{

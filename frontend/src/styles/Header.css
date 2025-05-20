@@ -34,6 +34,7 @@ body {
 
 .buttons{
     display:flex;
+    cursor: pointer;
     
 }
 
@@ -45,6 +46,7 @@ body {
     color: #FFFFFF;
     background: #000000;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .CreateImage{
@@ -65,6 +67,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .create:hover {

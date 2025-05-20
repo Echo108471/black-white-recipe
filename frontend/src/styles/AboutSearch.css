@@ -31,7 +31,7 @@
 }
 
 .searchI-about{
-    transform: translate(1260px, -40px);
+    transform: translate(88rem, -40px);
 }
 
 .search-bar-about.open {
@@ -160,10 +160,10 @@
     height: auto;
     margin-left: 37%;
     margin-top: 3%;
-    border: none;
     border-radius: 30px;
-    cursor: pointer;
     transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
 }
 
 .cook-button-about button:hover {

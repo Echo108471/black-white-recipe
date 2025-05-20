@@ -22,18 +22,18 @@ function Home() {
     return (
         <div className="home-container">
             <div className="home-box">
-                <h2>백색인 재료가 흑색이 되기 전에 요리해 먹을 수 있게!</h2>
+                <h2>Cook it while it’s still fresh <br></br>before it turns black!</h2>
             </div>
             <div className="most-search">
             <h1>Most searched recipes</h1>
                 <div className="most-card">
                     {recipes.map((recipe) => (
                         <RecipeCardHome
-                            key={recipe.id}
-                            image={`http://localhost:8000${recipe.image_url}`} className="recipe-image"
-                            title={recipe.title}
-                            summary={recipe.description}
-                        />
+                        id={recipe.id}
+                        image={`http://localhost:8000${recipe.image_url}`}
+                        title={recipe.title}
+                        summary={recipe.description.slice(0, 100) + "..."}
+                        />                      
                     ))}
                 </div>
             </div>

@@ -10,22 +10,27 @@
     display: flex;
     background-color: black;
     color: white;
+    display: flex;
+    white-space: nowrap;
+
 }
 
 .footer ul{
     display: flex;
     margin-top: 2.5%;
     margin-left: 5%;
-    gap: 80%;
+    gap: 10rem;
+    width: auto;
 }
 
-.footer ul li{
+.footer ul li {
     display: flex;
-    display: flex;
+    white-space: nowrap;
+    overflow: visible;
 }
-
 
 .footer ul li a{
+    position: relative;
     display: flex;
     margin-top: 1%;
     text-decoration: none;
@@ -34,36 +39,33 @@
     font-style: normal;
     font-weight: 800;
     font-size: 18px;
-    display: flex;
+    bottom: -4px;
+    padding-bottom: 5px;
 }
 
-.navbar ul li a {
-    position: relative;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-}
-
-.navbar ul li a::after {
+.footer ul li a::after {
     content: '';
     width: 0%;
     height: 2px;
-    background: rgb(255, 255, 255);
+    background: rgb(255, 255, 255)!important;
     display: block;
     margin: auto;
     transition: 0.5s;
+    bottom: 0;
 }
-.navbar ul li a:hover::after {
+.footer ul li a:hover::after {
     width: 100%; 
 }
 
 .Icons{
     display: flex;
     gap: 10%;
-    margin-left: 50%;
+    margin-left: 20%;
 }
 
 .Icons img{
     width: 30px;
+    cursor: pointer;
 }
 
 .WhiteLine{

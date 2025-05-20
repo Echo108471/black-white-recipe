@@ -1,0 +1,53 @@
+.account-create-container{
+    display: flex;
+}
+
+.account-create-form{
+    display: grid;
+    row-gap: 1rem;
+    margin-left: 20rem;
+    width: 300px;
+}
+
+.createaccount h2{
+    margin-left: 22rem;
+}
+
+.profile-upload img{
+    margin-left: 5.5rem;
+    cursor: pointer;
+}
+
+.account-create-form h3{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    color: #000000;
+    margin-left: 4.5rem;
+}
+
+.account-create-form input{
+    margin-left: -2rem;
+    height: 50px;
+    border: 1.2px solid black;
+    padding-left: 1rem;
+}
+
+.account-create-form button{
+    background: #000000;
+    border: 1px solid #000000;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    height: 40px;
+    margin-left: -2rem;
+}
+
+.account-create-form p{
+    cursor: pointer;
+}

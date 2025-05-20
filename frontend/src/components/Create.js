@@ -59,22 +59,29 @@ const handleSave = () => {
 };
 
 const handlePublish = async () => {
+    const currentUserId = parseInt(localStorage.getItem("user_id"));
+    if (!currentUserId) {
+      alert("⚠️ 로그인 정보가 없습니다. 다시 로그인해주세요.");
+      return;
+    }
+  
     const formData = new FormData();
     formData.append("title", recipeTitle);
     formData.append("description", recipeInfo);
     formData.append("instructions", steps.map((s, i) => `Step ${i + 1}: ${s.description}`).join("\n\n"));
-    
-    const ingredientList = ingredients.map((i) => i.name).filter((name) => name.trim() !== "");
-    formData.append("ingredients", JSON.stringify(ingredientList));
-  
-    if (image) {
-      formData.append("image", image);
-    }
+    formData.append("image", image);
+    formData.append("ingredients", JSON.stringify(
+        ingredients.filter(i => i.name.trim() !== "")
+        ));      
+    formData.append("serving_size", serving);
+    formData.append("time", time);
+    formData.append("difficulty", difficulty);
+    formData.append("author_id", currentUserId);
   
     try {
       const response = await fetch("http://localhost:8000/create_recipes", {
         method: "POST",
-        body: formData,
+        body: formData
       });
   
       if (response.ok) {
@@ -89,6 +96,7 @@ const handlePublish = async () => {
       alert("❌ Failed to publish recipe.");
     }
   };
+  
   
   return (
     <section className="createrecipe-container"> 

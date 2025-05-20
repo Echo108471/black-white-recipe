@@ -3,7 +3,7 @@ import "../styles/SearchBox.css";
 import SearchingIcon from "../assets/searchingicon.svg";
 import { useNavigate } from "react-router-dom";
 
-const dummyPopularSearches = ["chicken", "cookies", "lasagna", "pancakes", "pasta", "salad", "steak"]; // dummy 
+const dummyPopularSearches = ["chicken", "cookies", "lasagna", "pancakes", "pasta", "salad"]; // dummy 
 
 function SearchBox() {
     const [searchQuery, setSearchQuery] = useState("");

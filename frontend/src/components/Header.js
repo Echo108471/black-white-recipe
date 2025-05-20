@@ -14,7 +14,7 @@ function Header() {
                 <h1 className="logo">BnW Recipe</h1>
             </div>
             <div className="buttons">
-                <button className="login">Login</button>
+                <button className="login" onClick={() => navigate("/login")}>Login</button>
                 <button className="create" onClick={() => navigate("/create")}>
                     Create
                     <img src={CreateImage} alt="CreateImage" className="CreateImage" />

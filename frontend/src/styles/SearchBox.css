@@ -12,7 +12,7 @@
 
 .search-header{
     display: flex;
-    gap: 20%;
+    gap: 23%;
     margin-left: 10%;
     margin-top: 3%;
 }
@@ -46,16 +46,18 @@
 }
 
 .SearchingIcon {
-    width: 67px; 
+    width: 66px; 
     cursor: pointer;
     margin-left: -5%;
-    margin-top: -15.5%;
+    margin-top: -6.5%;
     z-index: 10;
+    height: auto;
 }
 
 .searches{
     display: flex;
-    gap:7%}
+    gap:7%
+}
 
 .popular-searches{
     display: grid;
@@ -74,4 +76,9 @@
     width: 96px;
     height: 40px;
     margin-top: 0%;
+    cursor: pointer;
+}
+
+.popular-btn:hover{
+    background-color: #3c3c3c;
 }

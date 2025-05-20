@@ -1,16 +1,16 @@
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import func
-from .models import Recipe, Ingredient, recipe_ingredient
+from .models import Recipe, Ingredient, RecipeIngredient  
 from typing import List, Dict
 
 def recipe_filter_query(db: Session, filter_terms: List[str]) -> List[Dict]:
     # Get all recipes that include **all** of the filter_terms
     subquery = (
-        db.query(recipe_ingredient.c.recipe_id)
-        .join(Ingredient, recipe_ingredient.c.ingredient_id == Ingredient.id)
+        db.query(RecipeIngredient.c.recipe_id)
+        .join(Ingredient, RecipeIngredient.c.ingredient_id == Ingredient.id)
         .filter(Ingredient.name.in_(filter_terms))
-        .group_by(recipe_ingredient.c.recipe_id)
+        .group_by(RecipeIngredient.c.recipe_id)
         .having(func.count(Ingredient.id) == len(filter_terms))
         .subquery()
     )
@@ -24,8 +24,8 @@ def recipe_filter_query(db: Session, filter_terms: List[str]) -> List[Dict]:
         Recipe.image_url,  # ✅ 요거 추가!
         func.array_agg(Ingredient.name).label("ingredients"),
     )
-    .join(recipe_ingredient, Recipe.id == recipe_ingredient.c.recipe_id)
-    .join(Ingredient, recipe_ingredient.c.ingredient_id == Ingredient.id)
+    .join(RecipeIngredient, Recipe.id == RecipeIngredient.c.recipe_id)
+    .join(Ingredient, RecipeIngredient.c.ingredient_id == Ingredient.id)
     .group_by(Recipe.id)
     .having(func.array_agg(Ingredient.name).op("@>")(filter_terms))
 )

@@ -30,10 +30,15 @@ html{
 }
 
 .home-box h2{
-    color: white;
     margin-left: 10%;
     font-size: 48px;
     z-index: 10;
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 65px;
+    color: #FFFFFF;
 }
 .home-container h1{
     text-align: center;
@@ -99,7 +104,6 @@ html{
 
 
 .view-recipe-btn-Home {
-    background: #ff6347;
     color: white;
     border: none;
     cursor: pointer;
@@ -117,7 +121,7 @@ html{
 }
 
 .view-recipe-btn-Home:hover {
-    background: #8585fe;
+    background: #525252;
 }
 
 .pop-search{

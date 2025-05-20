@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session, joinedload
 from collections import Counter
 from .database import get_db
-from .models import Ingredient, Recipe, recipe_ingredient
+from .models import Recipe, User, Ingredient, RecipeIngredient, Comment, Rating
 from .filter import recipe_filter_query
 from pydantic import BaseModel
 from typing import List
@@ -10,6 +10,12 @@ from fastapi import UploadFile, File, Form
 import shutil
 import os
 import json
+from fastapi import APIRouter, Depends, HTTPException
+from sqlalchemy.orm import Session, joinedload
+from .database import get_db
+from .models import Recipe, User, Ingredient, Comment, Rating
+
+
 
 class RecipeCreate(BaseModel):
     title: str
@@ -19,22 +25,28 @@ class RecipeCreate(BaseModel):
 
 router = APIRouter()
 
-
-@router.get("/recipes")
-def get_all_recipes(db: Session = Depends(get_db)):
-    data = (
-        db.query(Recipe)
-        .options(joinedload(Recipe.ingredients))
-        .all()
-    )
-    return [{
-        "id": recipe.id,
-        "title": recipe.title,
-        "description": recipe.description,
-        "instructions": recipe.instructions,
-        "image_url": recipe.image_url,
-        "ingredients": [ingredient.name for ingredient in recipe.ingredients]
-    } for recipe in data]
+# @router.get("/recipes")
+# def get_all_recipes(db: Session = Depends(get_db)):
+#     data = (
+#         db.query(Recipe)
+#         .options(joinedload(Recipe.recipe_ingredients).joinedload(RecipeIngredient.ingredient))
+#         .all()
+#     )
+#     return [{
+#         "id": recipe.id,
+#         "title": recipe.title,
+#         "description": recipe.description,
+#         "instructions": recipe.instructions,
+#         "image_url": recipe.image_url,
+#         "ingredients": [
+#             {
+#                 "name": ri.ingredient.name,
+#                 "amount": ri.amount,
+#                 "note": ri.note
+#             }
+#             for ri in recipe.recipe_ingredients
+#         ],
+#             } for recipe in data]
 
 @router.get("/ingredients")
 def get_all_ingredients(db: Session = Depends(get_db)):
@@ -62,8 +74,12 @@ async def create_recipe(
     title: str = Form(...),
     description: str = Form(...),
     instructions: str = Form(...),
-    ingredients: str = Form(...),  # JSON string
+    ingredients: str = Form(...),  # <- JSON string
     image: UploadFile = File(...),
+    serving_size: str = Form(...),
+    time: str = Form(...),
+    difficulty: str = Form(...),
+    author_id: int = Form(...),
     db: Session = Depends(get_db)
 ):
     # 중복 검사
@@ -85,32 +101,175 @@ async def create_recipe(
         title=title,
         description=description,
         instructions=instructions,
-        image_url=image_url
+        image_url=image_url,
+        serving_size=serving_size,
+        time=time,
+        difficulty=difficulty,
+        author_id=author_id
     )
     db.add(new_recipe)
     db.flush()
 
     # 재료 처리
-    ingredient_names = json.loads(ingredients)
-    ingredient_objects = []
-    existing_ingredients = {ing.name: ing for ing in db.query(Ingredient).filter(Ingredient.name.in_(ingredient_names)).all()}
+    ingredient_data = json.loads(ingredients)
 
-    for name in ingredient_names:
-        ingredient = existing_ingredients.get(name)
+    # 재료가 문자열 배열로 온 경우 처리
+    if ingredient_data and isinstance(ingredient_data[0], str):
+        ingredient_data = [{"name": name} for name in ingredient_data]
+
+    for item in ingredient_data:
+        name = item.get("name", "")
+        amount = item.get("amount", "")
+        note = item.get("note", "")
+
+        if not name:
+            continue
+
+        ingredient = db.query(Ingredient).filter(Ingredient.name == name).first()
         if not ingredient:
             ingredient = Ingredient(name=name)
             db.add(ingredient)
             db.flush()
-        ingredient_objects.append(ingredient)
 
-    new_recipe.ingredients.extend(ingredient_objects)
-    db.commit()
+        assoc = RecipeIngredient(
+            recipe_id=new_recipe.id,
+            ingredient_id=ingredient.id,
+            amount=amount,
+            note=note
+        )
+        db.add(assoc)
+        db.commit()
+
 
     return {
         "id": new_recipe.id,
         "title": new_recipe.title,
         "description": new_recipe.description,
         "instructions": new_recipe.instructions,
+        "serving_size": new_recipe.serving_size,
+        "time": new_recipe.time,
+        "difficulty": new_recipe.difficulty,
+        "author_id": new_recipe.author_id,
         "image_url": new_recipe.image_url,
-        "ingredients": [i.name for i in ingredient_objects]
+        # 응답에서 재료 정보 다시 불러오기
+        "ingredients": [
+            {
+                "name": assoc.ingredient.name,
+                "amount": assoc.amount,
+                "note": assoc.note
+            }
+            for assoc in db.query(RecipeIngredient).filter(RecipeIngredient.recipe_id == new_recipe.id).all()
+        ]
     }
+    
+@router.get("/recipe/{recipe_id}")
+def get_recipe_detail(recipe_id: int, db: Session = Depends(get_db)):
+    recipe = (
+        db.query(Recipe)
+        .options(
+            joinedload(Recipe.recipe_ingredients).joinedload(RecipeIngredient.ingredient),
+            joinedload(Recipe.author),
+            joinedload(Recipe.comments).joinedload(Comment.user),
+            joinedload(Recipe.ratings)
+        )
+        .filter(Recipe.id == recipe_id)
+        .first()
+    )
+
+    if not recipe:
+        raise HTTPException(status_code=404, detail="Recipe not found.")
+
+    return {
+        "id": recipe.id,
+        "title": recipe.title,
+        "description": recipe.description,
+        "instructions": recipe.instructions,
+        "image_url": recipe.image_url,
+        "serving_size": recipe.serving_size,
+        "time": recipe.time,
+        "difficulty": recipe.difficulty,
+        "author": {
+            "email": recipe.author.email,
+            "image_url": recipe.author.image_url
+        },
+        "ingredients": [
+            {
+                "name": ri.ingredient.name,
+                "amount": ri.amount,
+                "note": ri.note
+            }
+            for ri in recipe.recipe_ingredients
+        ],
+        "comments": [
+        {
+            "user_email": comment.user.email,
+            "content": comment.content,
+            "rating": next((r.score for r in recipe.ratings if r.user_id == comment.user_id), None)
+        }
+        for comment in recipe.comments
+    ],
+
+        "ratings": [rating.score for rating in recipe.ratings],
+    }
+from pydantic import BaseModel
+
+class CommentCreate(BaseModel):
+    content: str
+    rating: float
+    user_id: int
+
+@router.get("/recipes")
+def get_all_recipes(db: Session = Depends(get_db)):
+    data = (
+        db.query(Recipe)
+        .options(
+            joinedload(Recipe.recipe_ingredients).joinedload(RecipeIngredient.ingredient),
+            joinedload(Recipe.ratings)
+        )
+        .all()
+    )
+    return [{
+        "id": recipe.id,
+        "title": recipe.title,
+        "description": recipe.description,
+        "instructions": recipe.instructions,
+        "image_url": recipe.image_url,
+        "ratings": [r.score for r in recipe.ratings],
+        "average_rating": round(
+            sum(r.score for r in recipe.ratings) / len(recipe.ratings), 1
+        ) if recipe.ratings else None,
+        "ingredients": [
+            {
+                "name": ri.ingredient.name,
+                "amount": ri.amount,
+                "note": ri.note
+            }
+            for ri in recipe.recipe_ingredients
+        ],
+    } for recipe in data]
+
+@router.post("/recipe/{recipe_id}/comment", status_code=201)
+def add_comment(recipe_id: int, comment_data: CommentCreate, db: Session = Depends(get_db)):
+    recipe = db.query(Recipe).filter(Recipe.id == recipe_id).first()
+    if not recipe:
+        raise HTTPException(status_code=404, detail="Recipe not found")
+
+    # 댓글 저장
+    comment = Comment(
+        content=comment_data.content,
+        user_id=comment_data.user_id,
+        recipe_id=recipe_id
+    )
+    db.add(comment)
+    db.flush()
+
+    # 평점 저장
+    rating = Rating(
+        score=comment_data.rating,
+        user_id=comment_data.user_id,
+        recipe_id=recipe_id
+    )
+    db.add(rating)
+    db.commit()
+
+    return {"message": "Comment and rating submitted successfully"}

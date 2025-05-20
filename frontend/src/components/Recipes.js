@@ -69,15 +69,25 @@ function AllRecipe() {
                 onChange={(e) => RecipesetSearchTerm(e.target.value)}
             />
             <div className="recipe-cards">
-                {filteredRecipes.map((recipe) => (
+                {filteredRecipes.map((recipe) => {
+                const ratingScores = recipe.ratings || [];
+                const averageRating = ratingScores.length
+                    ? parseFloat((ratingScores.reduce((a, b) => a + b, 0) / ratingScores.length).toFixed(1))
+                    : 0;
+
+                console.log(`📊 Recipe: ${recipe.title}, Avg Rating: ${averageRating}, Ratings:`, ratingScores); // ✅
+
+                return (
                     <RecipeCard
-                        key={recipe.id}
-                        image={`http://localhost:8000${recipe.image_url}`} className="recipe-image"
-                        title={recipe.title}
-                        // summary={recipe.summary}
-                        rate={recipe.rate}
+                    key={recipe.id}
+                    id={recipe.id}
+                    image={`http://localhost:8000${recipe.image_url}`}
+                    title={recipe.title}
+                    rate={recipe.average_rating || 0}
+                    ratingCount={recipe.ratings?.length || 0}
                     />
-                ))}
+                );
+            })}
             </div>
 
         {/* 페이지네이션 */}

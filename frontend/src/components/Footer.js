@@ -15,9 +15,9 @@ function Footer() {
             {/*<img src={LogoIcon} alt="logo_footer" className="LogoIcon_footer" />*/}
             <h1>BnW Recipe</h1>
             <ul>
-                <li><Link to="/recipes">Recipes</Link></li>
                 <li><Link to="/">Home</Link></li>
-                <li><Link to="/ranking">Ranking</Link></li>
+                <li><Link to="/recipes">All Recipes</Link></li>
+                <li><Link to="/About">About Us</Link></li>
             </ul>
             <div className="Icons">
                 <img src={FacebookIcon} alt="FacebookIcon" className="FacebookIcon" />
