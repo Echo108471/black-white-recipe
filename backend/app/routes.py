@@ -189,7 +189,7 @@ def get_recipe_detail(recipe_id: int, db: Session = Depends(get_db)):
         "time": recipe.time,
         "difficulty": recipe.difficulty,
         "author": {
-            "email": recipe.author.email,
+            "username": recipe.author.username,
             "image_url": recipe.author.image_url
         },
         "ingredients": [
@@ -202,7 +202,7 @@ def get_recipe_detail(recipe_id: int, db: Session = Depends(get_db)):
         ],
         "comments": [
         {
-            "user_email": comment.user.email,
+            "username": comment.user.username,
             "content": comment.content,
             "rating": next((r.score for r in recipe.ratings if r.user_id == comment.user_id), None)
         }
