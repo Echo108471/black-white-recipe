@@ -5,7 +5,7 @@
     color: #333;
     line-height: 1.6;
     background-color: #EFEFF7;
-  }
+}
 .title-detail{
     display: flex;
     margin-left: 22rem;
@@ -229,29 +229,28 @@
 .instruction-list {
     padding: 0;
     margin: 0;
-  }
-  
-  .instruction-step {
+}
+
+.instruction-step {
     margin-bottom: 32px;
     padding-left: 10px;
-  }
-  
-  .step-title {
+}
+
+.step-title {
     font-weight: bold;
     font-size: 18px;
     text-transform: uppercase;
     margin-bottom: 12px;
-  }
-  
-  .step-lines {
+}
+
+.step-lines {
     list-style-type: disc;
     padding-left: 24px;
     margin: 0;
-  }
-  
-  .step-line {
+}
+
+.step-line {
     margin-bottom: 8px;
     line-height: 1.6;
     padding-left: 10px;
-  }
-  
+}
