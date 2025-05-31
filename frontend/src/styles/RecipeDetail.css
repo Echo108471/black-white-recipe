@@ -32,6 +32,7 @@
     height: 438px;
     margin-left: 22rem;
     z-index: 1;
+    object-fit: cover;
     }
 
 .main{
@@ -49,7 +50,7 @@
 .author-section {
     align-items: center;
     gap: 1rem;
-    margin-left: 31rem;
+    margin-left: 35rem;
 }
 
 .author-image {
@@ -58,7 +59,7 @@
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid #ccc;
-    margin-left: 4rem;
+    margin-left: 0.8rem;
 }
 .description {
     margin-bottom: 1.5rem;
@@ -164,8 +165,6 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 25px;
-    display: flex;
-    align-items: center;
     color: #000000;
 }
 
@@ -227,3 +226,32 @@
     display: flex;
     gap: 0.5rem;
 }
+.instruction-list {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .instruction-step {
+    margin-bottom: 32px;
+    padding-left: 10px;
+  }
+  
+  .step-title {
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  
+  .step-lines {
+    list-style-type: disc;
+    padding-left: 24px;
+    margin: 0;
+  }
+  
+  .step-line {
+    margin-bottom: 8px;
+    line-height: 1.6;
+    padding-left: 10px;
+  }
+  

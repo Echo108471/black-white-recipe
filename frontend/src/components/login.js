@@ -31,7 +31,9 @@ function Login() {
                 // ✅ 로그인 정보 저장
                 localStorage.setItem("user_id", data.user_id);
                 localStorage.setItem("email", data.email);
+                localStorage.setItem("username", data.username);
                 localStorage.setItem("image_url", data.image_url);
+                localStorage.setItem("isLoggedIn", "true");
             
                 alert("✅ Login successful!");
                 navigate("/");

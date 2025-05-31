@@ -16,6 +16,7 @@ import Login from "./components/Login";
 import RecipeDetail from "./components/RecipeDetail";
 import AccountCreate from "./components/AccountCreate";
 import FindPassword from "./components/FindPassword";
+import MyAccount from "./components/MyAccount";
 
 
 
@@ -51,6 +52,8 @@ function App() {
         <Route path="/add-steps" element={<AddSteps />} />
         <Route path="/accountcreate" element={<AccountCreate />} />
         <Route path="/findpassword" element={<FindPassword />} />
+        <Route path="/myaccount" element={<MyAccount />} />
+
 
       </Routes>
 

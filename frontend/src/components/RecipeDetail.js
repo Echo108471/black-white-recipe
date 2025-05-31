@@ -95,7 +95,7 @@ function RecipeDetail() {
   
           return stars;
       };
-      
+      const steps = recipe.instructions.split(/(?=Step \d+:)/);      
 
   return (
     <div className="recipe-detail">
@@ -117,7 +117,7 @@ function RecipeDetail() {
                 alt="author"
                 className="author-image"
             />
-            <p>{recipe.author?.email || "Unknown author"}</p>
+            <p>{recipe.author?.username || "Unknown author"}</p>
         </div>
 
         <div className="info-row">
@@ -151,13 +151,33 @@ function RecipeDetail() {
         </ul>
     </div>
     <div className="main2">
-        <h3>Recipe Instruction</h3>
-        <ol>
-            {recipe.instructions.split("\n\n").map((step, idx) => (
-            <li key={idx}>{step}</li>
-            ))}
-        </ol>
-        </div>
+      <h3>Recipe Instruction</h3>
+          <div className="instruction-list">
+            {steps.map((stepBlock, idx) => {
+              const lines = stepBlock.trim().split("\n").filter(line => line.trim() !== "");
+              const [firstLine, ...rest] = lines;
+
+              // 제목 추출: "Step 1: In a mixing bowl..." → STEP 1
+              const match = firstLine.match(/^Step (\d+):\s*(.*)/);
+              const stepNumber = match?.[1] || idx + 1;
+              const firstSentence = match?.[2] || firstLine;
+
+              return (
+                <div key={idx} className="instruction-step">
+                  <h4 className="step-title">STEP {stepNumber}</h4>
+                  <ul className="step-lines">
+                    <li className="step-line">{firstSentence}</li>
+                    {rest.map((line, i) => (
+                      <li key={i} className="step-line">{line}</li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+
+          </div>
+
         <div className="comments">
             {/* ✅ 입력 폼 */}
             <form onSubmit={handleCommentSubmit}className="comment-form">
@@ -180,7 +200,7 @@ function RecipeDetail() {
             {recipe.comments?.length > 0 ? (
                 recipe.comments.map((c, i) => (
                 <div key={i} className="comment">
-                    <strong>{c.user_email}</strong> — {<img src={Star} alt ="star" className="star"></img>} {c.rating || "N/A"}<br />
+                    <strong>{c.username}</strong> — <img src={Star} alt="star" className="star" /> {c.rating || "N/A"}<br />
                     <p>{c.content}</p>
                 </div>
                 ))

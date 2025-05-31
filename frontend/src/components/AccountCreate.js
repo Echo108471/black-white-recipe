@@ -71,7 +71,7 @@ function AccountCreate() {
                     />
                     <input
                         type="text"
-                        placeholder="Profile name"
+                        placeholder="Profile ID"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
